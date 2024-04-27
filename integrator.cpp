@@ -62,9 +62,11 @@ int main()
     int min_N = 8;
     int max_N = 1024;
     int factor = 2; // multiplication factor
+    int precision = 8;
+    int width = 12;
 
     std::cout << "Function 1: exp(-x^2)" << std::endl;
-    std::cout << "N" << std::setw(12) << "Trapezoid" << std::setw(12) << "Monte Carlo" << std::endl;
+    std::cout << "N" << std::setw(width) << "Trapezoid" << std::setw(width) << "Monte Carlo" << std::endl;
     for (int N = min_N; N <= max_N; N *= factor)
     {
         double trapezoid_result1 = 0.0;
@@ -73,10 +75,10 @@ int main()
         double monte_carlo_result1 = 0.0;
         montecarlo_integrate(N, -5.0, 5.0, monte_carlo_result1, f1);
 
-        std::cout << N << std::setw(12) << std::setprecision(8) << trapezoid_result1 << std::setw(12) << monte_carlo_result1 << std::endl;
+        std::cout << N << std::setw(width) << std::setprecision(precision) << trapezoid_result1 << std::setw(width) << monte_carlo_result1 << std::endl;
     }
     std::cout << "Function 2: sin^2((x(2-x)+1e-12)^-1)" << std::endl;
-    std::cout << "N" << std::setw(12) << "Trapezoid" << std::setw(12) << "Monte Carlo" << std::endl;
+    std::cout << "N" << std::setw(width) << "Trapezoid" << std::setw(width) << "Monte Carlo" << std::endl;
     for (int N = min_N; N <= max_N; N *= factor)
     {
         double trapezoid_result2 = 0.0;
@@ -85,6 +87,6 @@ int main()
         double monte_carlo_result2 = 0.0;
         montecarlo_integrate(N, 0.0, 2.0, monte_carlo_result2, f2);
 
-        std::cout << N << std::setw(12) << std::setprecision(8) << trapezoid_result2 << std::setw(12) << monte_carlo_result2 << std::endl;
+        std::cout << N << std::setw(width) << std::setprecision(precision) << trapezoid_result2 << std::setw(width) << monte_carlo_result2 << std::endl;
     }
 }
